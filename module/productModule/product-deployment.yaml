@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: product-container
-        image: product-image:latest
+        image: kub/product
         ports:
         - containerPort: 8080
       - name: product-logs
