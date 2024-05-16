@@ -12,6 +12,6 @@ le script [./_run_.ps1](./_run_.ps1) permet ✅ tout ça ! 😏
 
 ## Au niveau de l'éval
 
-nous n'avons juste pas fait les bonus de [l'énnoncé](Évaluation%20finale%20-%20sujet.pdf) 😨🏔️
+nous n'avons juste pas fait les bonus de [l'énoncé](Évaluation%20finale%20-%20sujet.pdf) 😨🏔️
 
 mais les reste oui ✅
