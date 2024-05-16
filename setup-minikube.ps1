@@ -1,6 +1,8 @@
 echo "##########################################"
 winget install Kubernetes.minikube
 echo "##########################################"
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
+echo "##########################################"
 minikube config set driver docker
 echo "##########################################"
 minikube delete
