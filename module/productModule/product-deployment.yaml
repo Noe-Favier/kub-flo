@@ -17,6 +17,15 @@ spec:
         image: product-image:latest
         ports:
         - containerPort: 8080
+      - name: product-logs
+        image: busybox
+        args: ["sh", "-c", "tail -f /var/product.log"]
+        volumeMounts:
+        - name: logs
+          mountPath: /var
+      volumes:
+      - name: logs
+        emptyDir: {}
 
 ---
 apiVersion: autoscaling/v2
