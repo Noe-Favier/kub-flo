@@ -1,8 +1,19 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"io"
+	"os"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
+	/* LOG FILE */
+	gin.DisableConsoleColor()
+	f, _ := os.Create("/var/user.log")
+	gin.DefaultWriter = io.MultiWriter(f)
+	/* -------- */
+
 	r := gin.Default()
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -10,5 +21,5 @@ func main() {
 		})
 	})
 
-	r.Run() // listen and serve on 0.0.0.0:8080
+	r.Run()
 }
