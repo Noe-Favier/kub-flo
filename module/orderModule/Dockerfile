@@ -13,8 +13,10 @@ WORKDIR /app
 # Copy the source code into the container.
 COPY . .
 
+RUN pip install -r requirements.txt
+
 # Expose the port that the application listens on.
-EXPOSE 8081
+EXPOSE 5000
 
 # Run the application.
-CMD python3 main.py
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
