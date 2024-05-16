@@ -19,7 +19,7 @@ spec:
         - containerPort: 8080
 
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: product-hpa
@@ -31,7 +31,13 @@ spec:
   minReplicas: 2
   maxReplicas: 10
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      targetAverageUtilization: 50
+  - type: Object
+    object:
+      describedObject:
+        kind: Service
+        name: store-autoscale
+      metric:
+        name: "autoscaling.googleapis.com|gclb-capacity-utilization"
+      target:
+        averageValue: 50
+        type: AverageValue
