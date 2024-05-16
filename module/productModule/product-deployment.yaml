@@ -17,21 +17,12 @@ spec:
         image: product-image:latest
         ports:
         - containerPort: 8080
-
----
-apiVersion: autoscaling/v2beta2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: product-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: product-deployment
-  minReplicas: 2
-  maxReplicas: 10
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      targetAverageUtilization: 50
+      - name: product-logs
+        image: busybox
+        args: ["sh", "-c", "tail -f /var/product.log"]
+        volumeMounts:
+        - name: logs
+          mountPath: /var
+      volumes:
+      - name: logs
+        emptyDir: {}
