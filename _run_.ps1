@@ -1,12 +1,12 @@
 echo "###########################################"
 echo "##           BUILD DOCKERFILES           ##"
 echo "###########################################"
-./build-docker.ps1
+./scripts/build-docker.ps1
 
 echo "###########################################"
 echo "##           UPDATE KUBERNETES           ##"
 echo "###########################################"
-./kubectl-setup.ps1
+./scripts/kubectl-setup.ps1
 
 echo "###########################################"
 echo "##...FINI...##"
